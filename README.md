@@ -7,3 +7,7 @@ Langchain is a javaScript library that allow to build LLM powered software.
 e.g:<br>
    user : What is the weather today?<br>
    tools -> AI agent : Today's whether is 20°C.
+## Setup
+### Run:
+```
+npx ts-node fileName.ts
