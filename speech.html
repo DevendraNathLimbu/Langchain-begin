@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 22px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+    <form action="" onsubmit="event.preventDefault(); speak(document.getElementById('textInput').value); document.getElementById('textInput').value='';">
+        <input type="text" name="" id="textInput">
+        <button>speak</button>
+    </form>
+</body>
+
+<script>
+
+function speak(text) {
+  const utterance = new SpeechSynthesisUtterance(text);
+
+  utterance.lang = "en-IN";
+  utterance.rate = 1;
+  utterance.pitch = 1;
+  utterance.volume = 1;
+
+  speechSynthesis.speak(utterance);
+}
+
+</script>
+
+</html>
