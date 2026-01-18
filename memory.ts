@@ -10,30 +10,41 @@ async function main() {
     temperature: 0,
   });
 
-  // Memory store
   const memory = new MemorySaver();
 
   const agent = createReactAgent({
     llm: model,
     tools: [],
-    checkpointSaver: memory, // MEMORY ENABLED
+    checkpointSaver: memory,
   });
 
-  // First message
-  const res1 = await agent.invoke({
-    messages: [new HumanMessage("My name is Dev.")],
-    configurable: { thread_id: "user-1" },
-  });
+  // 1️ First message
+  const res1 = await agent.invoke(
+    {
+      messages: [new HumanMessage("My name is Dev.")],
+    },
+    {
+      configurable: { thread_id: "user-1" },
+    }
+  );
 
-  console.log(res1.messages.at(-1)?.content);
+  console.log(
+    res1.messages[res1.messages.length - 1].content
+  );
 
-  // Second message (same thread!)
-  const res2 = await agent.invoke({
-    messages: [new HumanMessage("What is my name?")],
-    configurable: { thread_id: "user-1" },
-  });
+  // 2️ Second message (same thread = memory works)
+  const res2 = await agent.invoke(
+    {
+      messages: [new HumanMessage("What is my name?")],
+    },
+    {
+      configurable: { thread_id: "user-1" },
+    }
+  );
 
-  console.log(res2.messages.at(-1)?.content);
+  console.log(
+    res2.messages[res2.messages.length - 1].content
+  );
 }
 
 main();
