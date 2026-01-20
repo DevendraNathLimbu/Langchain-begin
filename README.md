@@ -11,3 +11,6 @@ e.g:<br>
 ### Run:
 ```
 npx ts-node fileName.ts
+```
+## Conclusion
+We do not build whole AI system ( LLM is vast, trained with huge no. of data sets ). What we do is build an AI agent, we teach agent to answer specific questions or to provide specific data as per requirement of user. The AI agent is intigrated with big LLMs (eg: OpenAI, Claude, Gemini, ..), actually the LLM is a brain and we input/teach something to it with the help of AI agent.
